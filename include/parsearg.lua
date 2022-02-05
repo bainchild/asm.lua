@@ -1,7 +1,7 @@
 
 local arg = {
     {type = 'reg', pattern = '(f%.%a+)', out = {'reg'}}, -- TODO: validate
-    {type = 'reg', pattern = '(fn)', out = {'reg'},
+    {type = 'reg', pattern = '(fn)', out = {'reg'}},
     {type = 'reg', pattern = '(ss)', out = {'reg'}},
     {type = 'reg', pattern = '(ds)', out = {'reg'}},
     {type = 'reg', pattern = '(a)', out = {'reg'}},
