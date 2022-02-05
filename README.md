@@ -16,10 +16,10 @@ To compile a file, you can use `./asm.lua *.lua`. By default, this will create a
 `a.lua` which you can run using the normal lua interpreter.
 
 ## TODO
-table support
-table functions
-\*fenv functions
-coroutine functions
+- table support
+- table functions
+- \*fenv functions
+- coroutine functions
 
 # Short reference
 
