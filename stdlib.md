@@ -2,8 +2,8 @@
 # asm.lua standard library
 
 ## Prelude
-`extern` includes a Lua file located in the path specified by `ss`. Equivalent
-to `require(_R.ss)`. will set the syserr flag if it fails
+`include` includes a Lua file located in the path specified by `ss`. Equivalent
+to `require(_R.ss)`. will set the syserr flag if it fails, and will set the ds register to the output if it is a string
 
 writing to memory address 81921 will print what was wrote to it
 
