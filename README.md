@@ -12,9 +12,8 @@ many features are subject to change.
 
 # Examples
 
-To compile the examples, execute `./asm.lua examples/X.lua`, where X is any of
-the examples included in the examples directory. This will create a file called
-`a.lua` that can be ran using the Lua interpreter, like so: `lua a.lua`.
+To compile a file, you use `./asm.lua *.lua`. By default, this will create a file called
+`a.lua` which you can run using the normal lua interpreter.
 
 # Short reference
 
@@ -53,9 +52,6 @@ general purpose memory
 
 #### 64ki .. 80ki
 stack
-
-#### 24ki video memory?
-// TODO
 
 ## Syntax & semantics
 
