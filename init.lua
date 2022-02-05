@@ -5,6 +5,7 @@ _X={}
 _D={}
 _P={}
 _PD={}
+_S,_ST=nil,nil
 _MMAP={{a=0,b=0,set=function()end,get=function()end},{a=1,b=81920,set=function(p,x) _D[p]=x end,get=function(p) return _D[p] end}}
 _M=function(p,x)
 for i=#_MMAP,1,-1 do
