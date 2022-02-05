@@ -6,12 +6,12 @@ ops['st'] = {pattern = '_M(%s,%s)', arg = {'a', 'b'}}
 ops['ld'] = {pattern = '%s=_M(%s)', arg = {'a', 'b'}}
 
 -- stack operations
-ops['call'] = {pattern = '_R.f.syserr=not pcall(%s)', arg = {'a'}}
+ops['call'] = {pattern = '_S,_ST = pcall(%s);_R.f.syserr=not _S; if _ST~=nil then _R.ds = _ST end', arg = {'a'}}
 ops['callx'] = {pattern = 'local _Xargs={}\n' ..
                           'local n=%d\n' ..
                           '_R.sp=_R.sp-n\n' ..
                           'for i=0,n-1 do _Xargs[i+1]=_M(_R.sp+i) end\n' ..
-                          '_R.f.syserr=not pcall(%s,unpck(_Xargs))',
+                          '_S,_ST = pcall(%s,unpck(_Xargs));_R.f.syserr=not S; if _ST~=nil then _R.ds = _ST end',
                           arg = {'b', 'a'}}
 ops['ret'] = {pattern = 'return', arg = {}}
 ops['push'] = {pattern = '_M(_R.sp,%s);_R.sp=_R.sp+1', arg = {'a'}}
