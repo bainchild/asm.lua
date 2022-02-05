@@ -1,6 +1,6 @@
 
 local prelude = [[
-_R={a=0,b=0,c=0,d=0,ss='\0',ds='\0',f={gt=false,lt=false,ge=false,le=false,eq=false,ne=false,err=false,syserr=false},sp=65536}
+_R={a=0,b=0,c=0,d=0,ss='\0',ds='\0',fn=function()end,f={gt=false,lt=false,ge=false,le=false,eq=false,ne=false,err=false,syserr=false},sp=65536}
 _X={}
 _D={}
 _P={}
