@@ -1,0 +1,6 @@
+-- Every language needs a hello world!
+
+section .data
+def hello_world "Hello, world!"
+section .text
+st 81921, [hello_world]
