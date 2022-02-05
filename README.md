@@ -15,6 +15,12 @@ many features are subject to change.
 To compile a file, you can use `./asm.lua *.lua`. By default, this will create a file called
 `a.lua` which you can run using the normal lua interpreter.
 
+## TODO
+table support
+table functions
+\*fenv functions
+coroutine functions
+
 # Short reference
 
 ## Registers
