@@ -14,7 +14,7 @@ ops['callx'] = {pattern = 'local _Xargs={}\n' ..
                           'local _S,_ST = pcall(%s,unpck(_Xargs));_R.f.syserr=not _S; if _ST~=nil then _R.ds = _ST end',
                           arg = {'b', 'a'}}
 ops['ls'] = {pattern = [[
-local m,w = loadstring('%s')
+local m,w = loadstring(%s)
 if m == nil then
   _R.f.syserr = true
   _R.ds = w
