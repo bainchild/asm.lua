@@ -14,14 +14,14 @@ ops['callx'] = {pattern = 'local _Xargs={}\n' ..
                           'local _S,_ST = pcall(%s,unpck(_Xargs));_R.f.syserr=not _S; if _ST~=nil then _R.ds = _ST end',
                           arg = {'b', 'a'}}
 ops['ls'] = {pattern = [[
-local m,w = loadstring(_R.ss)
+local m,w = loadstring('%s')
 if m == nil then
   _R.f.syserr = true
   _R.ds = w
 else
   _R.fn = m
 end
-]],arg={'ss'}}
+]],arg={'a'}}
 ops['ret'] = {pattern = 'return', arg = {}}
 ops['push'] = {pattern = '_M(_R.sp,%s);_R.sp=_R.sp+1', arg = {'a'}}
 ops['pop'] = {pattern = '_R.sp=_R.sp-1;%s=_M(_R.sp)', arg = {'a'}}
