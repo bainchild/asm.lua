@@ -44,7 +44,7 @@ std.strup = [[local strup=function() _R.ds=string.upper(_R.ss) end]]
 std.strlow = [[local strlow=function() _R.ds=string.lower(_R.ss) end]]
 std.strfind = [[local strfind=function() _R.a,_R.c=string.find(_R.ss,_R.ds);_R.c=_R.c-_R.a+1 end]]
 std.strmatch = [[local strmatch=function() _R.ds=string.find(_R.ss,_R.ds) end]]
-std.strform = [[local strform=function() local ars = {} for i=_sp,_sp+_R.c do ars[(i-_sp)+1]=_D[i] end;_sp=_sp+_R.c;_R.ds=string.format(_R.ss,unpack(ars)) end]]
+std.strform = [[local strform=function() local ars = {} for i=_R.sp,_R.sp+_R.c do ars[(i-_R.sp)+1]=_D[i] end;_R.sp=_R.sp+_R.c;_R.ds=string.format(_R.ss,unpack(ars)) end]]
 
 std.ord = [[local ord=function() _R.a=string.byte(_R.ss,1,1) end]]
 std.chr = [[local chr=function() _R.ds=string.char(_R.a) end]]
