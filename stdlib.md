@@ -5,19 +5,11 @@
 `include` includes a Lua file located in the path specified by `ss`. Equivalent
 to `require(_R.ss)`
 
-`putc` writes a single character from `ss` without a newline to stdout.
-
-`puts` writes a string from `ss` with a newline at the end to stdout.
-
-`endl` writes a newline feed to stdout.
-
-`sprintf` writes a formatted string to `ds`.
-
-`printf` writes a formatted string to stdout.
+writing to memory address 81921 will print what was wrote to it
 
 `itoa` converts a number into a string.
 
-`atoi` converts a string into a number.
+`atoi` converts a string into a number (with optional argument <base> as `b`).
 
 `memset` sets `c` cells in memory, starting from `b` to `a`.
 
