@@ -6,13 +6,22 @@ ops['st'] = {pattern = '_M(%s,%s)', arg = {'a', 'b'}}
 ops['ld'] = {pattern = '%s=_M(%s)', arg = {'a', 'b'}}
 
 -- stack operations
-ops['call'] = {pattern = '_S,_ST = pcall(%s);_R.f.syserr=not _S; if _ST~=nil then _R.ds = _ST end', arg = {'a'}}
+ops['call'] = {pattern = 'local _S,_ST = pcall(%s);_R.f.syserr=not _S; if _ST~=nil then _R.ds = _ST end', arg = {'a'}}
 ops['callx'] = {pattern = 'local _Xargs={}\n' ..
                           'local n=%d\n' ..
                           '_R.sp=_R.sp-n\n' ..
                           'for i=0,n-1 do _Xargs[i+1]=_M(_R.sp+i) end\n' ..
-                          '_S,_ST = pcall(%s,unpck(_Xargs));_R.f.syserr=not S; if _ST~=nil then _R.ds = _ST end',
+                          'local _S,_ST = pcall(%s,unpck(_Xargs));_R.f.syserr=not S; if _ST~=nil then _R.ds = _ST end',
                           arg = {'b', 'a'}}
+ops['ls'] = {pattern = [[
+local m,w = loadstring(_R.ss)
+if m == nil then
+  _R.f.syserr = true
+  _R.ds = w
+else
+  _R.fn = m
+end
+]],arg={'ss'}}
 ops['ret'] = {pattern = 'return', arg = {}}
 ops['push'] = {pattern = '_M(_R.sp,%s);_R.sp=_R.sp+1', arg = {'a'}}
 ops['pop'] = {pattern = '_R.sp=_R.sp-1;%s=_M(_R.sp)', arg = {'a'}}
