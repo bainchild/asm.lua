@@ -2,7 +2,7 @@
 local std = {}
 
 -- include
-std.include = [[local include=function() local r = ({require(_R.ss)}) if r[1] ~= nil and type(r[1]) == "string" then _R.ds = r[1] end end]]
+std.include = [[local include=function() local r = ({require(_R.ss)}) _R.ds = r[1] end]]
 
 -- base operations, included in prelude
 std.itoa = [[local itoa=function() _R.ds=tostring(_R.a) end]]
