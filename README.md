@@ -1,6 +1,6 @@
 # asm.lua
 
-A Lua-based assembly-like language designed for learning and teaching assembly.
+A Lua-based assembly-like language for lua.
 
 
 asm.lua based on the x86 architecture. To Lua, it's what asm.js is it to
@@ -12,7 +12,7 @@ many features are subject to change.
 
 # Examples
 
-To compile a file, you use `./asm.lua *.lua`. By default, this will create a file called
+To compile a file, you can use `./asm.lua *.lua`. By default, this will create a file called
 `a.lua` which you can run using the normal lua interpreter.
 
 # Short reference
