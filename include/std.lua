@@ -1,9 +1,6 @@
 
 local std = {}
 
--- can't see why they removed this
-std.include = [[local include=function() require(_R.ss) end]]
-
 -- base operations, included in prelude
 std.itoa = [[local itoa=function() _R.ds=tostring(_R.a) end]]
 std.atoi = [[local atoi=function() _R.ds=tonumber(_R.ss,_R.b) end]]
