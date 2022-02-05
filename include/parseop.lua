@@ -61,7 +61,7 @@ local parseop = function(expr, verbose)
     local err = false
 
     for k, v in pairs(expr) do
-        if k == 'a' or k == 'b' or k == 'c' then
+        if k == 'a' or k == 'b' or k == 'c' or k == 'd' then
             local status, result = pcall(parsearg, v, verbose)
             if status then
                 expr[k] = result
