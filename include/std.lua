@@ -3,7 +3,7 @@ local std = {}
 
 -- base operations, included in prelude
 std.itoa = [[local itoa=function() _R.ds=tostring(_R.a) end]]
-std.atoi = [[local atoi=function() _R.ds=tostring(_R.a) end]]
+std.atoi = [[local atoi=function() _R.ds=tonumber(_R.ss,_R.b) end]]
 std.memset = [[local memset=function() for i=0,_R.c-1 do _D[_R.b+i]=_R.a end end]]
 std.memcpy = [[local memcpy=function() for i=0,_R.c-1 do _D[_R.b+i]=_D[_R.a+i] end end]]
 std.memcmp = [[local memcmp=function() for i=0,_R.c-1 do local a=_D[_R.a+i]-_D[_R.b+i];if a~=0 then _R.a=a;return end end;_R.a=0 end]]
