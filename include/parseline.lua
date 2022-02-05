@@ -55,7 +55,7 @@ local parseline = function(line, verbose, linen)
             end
         end
         error(string.format('invalid expression: %s\n' ..
-                            '           at line: %d', expr, linen))
+                            '           at line: %d', line, linen))
    end
 end
 
