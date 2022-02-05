@@ -21,6 +21,7 @@ To compile a file, you can use `./asm.lua *.lua`. By default, this will create a
  - \*fenv functions
  - coroutine functions
  - debug functions
+- ways to get locals, globals, and upvalues inside of normal lua scripts, so that you are able to combine asm compiled and regular lua
 # Short reference
 
 ## Registers
