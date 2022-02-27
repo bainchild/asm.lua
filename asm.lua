@@ -45,6 +45,7 @@ local usage = function()
     print('Usage: asm.lua [options] FILE\n\n' ..
           'Options:\n' ..
           ' -o --out FILE   Output to FILE\n' ..
+          ' -m --minimize   Minimize the output by removing newlines" ..
           ' -n --nostd      No std library, std ports and standard mmap\n' ..
           ' -r --run        Run the output instead of writing go FILE\n' ..
           ' -h --help       Show this message and quit')
@@ -89,6 +90,9 @@ else
     print(result)
     os.exit(1)
 end
+if opts.m or opts.minimize then
+    code=code:gsub("\n"," ")    
+end
 
 local run = opts.r or opts.run
 if run then
@@ -105,7 +109,7 @@ else
     io.close(outfile)
 end
 
-if verbose and verbose then
+if verbose then
     printf('compiled %s', input)
     if not run then
         printf('written %d characters to %s', string.len(code), output)
