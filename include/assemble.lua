@@ -26,7 +26,7 @@ local expr_to_lua = function(expr, verbose)
 
     if type == 'section' then
         section = expr.name
-        return '-- .' .. expr.name
+        return '--[[ .' .. expr.name.." ]]"
     elseif type == 'op' then -- TODO
         return parseop(expr, verbose)
     elseif type == 'def' then
