@@ -7,10 +7,9 @@ ops['ld'] = {pattern = '%s=_M(%s)', arg = {'a', 'b'}}
 
 -- stack operations
 ops['call'] = {pattern = 'local _S,_ST = pcall(%s);_R.f.syserr=not _S; if _ST~=nil then _R.ds = _ST end', arg = {'a'}}
-ops['callx'] = {pattern = 'local _Xargs={}\n' ..
-                          'local n=%d\n' ..
+ops['callx'] = {pattern = '_Xargs={}\n' ..
                           '_R.sp=_R.sp-n\n' ..
-                          'for i=0,n-1 do _Xargs[i+1]=_M(_R.sp+i) end\n' ..
+                          'for i=0,(%d)-1 do _Xargs[i+1]=_M(_R.sp+i) end\n' ..
                           'local _S,_ST = pcall(%s,unpck(_Xargs));_R.f.syserr=not _S; if _ST~=nil then _R.ds = _ST end',
                           arg = {'b', 'a'}}
 ops['ls'] = {pattern = [[
