@@ -44,16 +44,14 @@ _P[0x103]=function() _PD[0x103]=os.time() end
 
 _ASM = {}
 
-table.unpack = table.unpack or unpack
+pcall(function() table.unpack = table.unpack or unpack end)
 
-local name = ...
-_ASM.root = string.gsub(name, '/init$', '') .. '/'
-
+_ASM.root = "./"
 _ASM.label = 0x0
 _ASM.labels = {}
 _ASM.externs = {}
 
-local parseline = require(_ASM.root .. 'include/parseline')
+local parseline = require('include/parseline')
 local genast = function(src, verbose)
     local line = 1
     local ast = {}
@@ -84,7 +82,7 @@ local genast = function(src, verbose)
     return ast
 end
 
-local assemble = require(_ASM.root .. 'include/assemble')
+local assemble = require('include/assemble')
 local compile = function(src, verbose, std, ports, mmap)
     _ASM.std = nil
 
@@ -94,7 +92,7 @@ local compile = function(src, verbose, std, ports, mmap)
     elseif type(std) == 'string' then
         _ASM.std = {std}
     elseif std then
-        _ASM.std = require(_ASM.root .. 'include/std')
+        _ASM.std = require('include/std')
         prelude = prelude .. port_std
         prelude = prelude .. '_MMAP[#_MMAP+1]={a=81921,b=81921,set=function(_,v) print(v) end,get=id}\n'
     end

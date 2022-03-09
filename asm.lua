@@ -1,9 +1,6 @@
 #!/bin/lua
 
-
-local root = string.gsub(arg[0], 'asm.lua$', '')
-local asm = require(root .. 'init')
-
+local asm = require('init')
 local argv = {...}
 local opts = {}
 local free = {}

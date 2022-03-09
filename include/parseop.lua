@@ -6,7 +6,7 @@ ops['st'] = {pattern = '_M(%s,%s)', arg = {'a', 'b'}}
 ops['ld'] = {pattern = '%s=_M(%s)', arg = {'a', 'b'}}
 
 -- stack operations
-ops['call'] = {pattern = 'local _S,_ST = pcall(%s);_R.f.syserr=not _S; if _ST~=>
+ops['call'] = {pattern = 'local _S,_ST = pcall(%s);_R.f.syserr=not _S; if _ST~=nil then _R.ds = _ST end', arg = {'a'}}
 ops['callx'] = {pattern = '_Xargs={}\n' ..
                           '_Xnargs=%d\n' ..
                           '_R.sp=_R.sp-_Xnargs\n' ..
@@ -62,7 +62,7 @@ ops['div'] = {pattern = '%s=%s/%s', arg = {'a', 'a', 'b'}}
 ops['out'] = {pattern = '_P[%s](%s)', arg = {'a', 'b'}}
 ops['in'] = {pattern = '%s = _PD[%s]()', arg = {'a', 'b'}}
 
-local parsearg = require(_ASM.root .. 'include/parsearg')
+local parsearg = require('include/parsearg')
 local parseop = function(expr, verbose)
     local err = false
 
