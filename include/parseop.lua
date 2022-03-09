@@ -6,10 +6,11 @@ ops['st'] = {pattern = '_M(%s,%s)', arg = {'a', 'b'}}
 ops['ld'] = {pattern = '%s=_M(%s)', arg = {'a', 'b'}}
 
 -- stack operations
-ops['call'] = {pattern = 'local _S,_ST = pcall(%s);_R.f.syserr=not _S; if _ST~=nil then _R.ds = _ST end', arg = {'a'}}
+ops['call'] = {pattern = 'local _S,_ST = pcall(%s);_R.f.syserr=not _S; if _ST~=>
 ops['callx'] = {pattern = '_Xargs={}\n' ..
-                          '_R.sp=_R.sp-n\n' ..
-                          'for i=0,(%d)-1 do _Xargs[i+1]=_M(_R.sp+i) end\n' ..
+                          '_Xnargs=%d\n' ..
+                          '_R.sp=_R.sp-_Xnargs\n' ..
+                          'for i=0,_Xnargs-1 do _Xargs[i+1]=_M(_R.sp+i) end\n' >
                           'local _S,_ST = pcall(%s,unpck(_Xargs));_R.f.syserr=not _S; if _ST~=nil then _R.ds = _ST end',
                           arg = {'b', 'a'}}
 ops['ls'] = {pattern = [[
@@ -22,6 +23,12 @@ else
 end
 ]],arg={'a'}}
 ops['ret'] = {pattern = 'return', arg = {}}
+ops['retx'] = {pattern = '_Xargs={}\n' ..
+                          '_Xnargs=%d\n' ..
+                          '_R.sp=_R.sp-_Xnargs\n' ..
+                          'for i=0,_Xnargs-1 do _Xargs[i+1]=_M(_R.sp+i) end\n' ..
+                          'return unpack(_Xargs)',
+                          arg = {'b', 'a'}}
 ops['push'] = {pattern = '_M(_R.sp,%s);_R.sp=_R.sp+1', arg = {'a'}}
 ops['pop'] = {pattern = '_R.sp=_R.sp-1;%s=_M(_R.sp)', arg = {'a'}}
 
