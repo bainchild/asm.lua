@@ -25,7 +25,7 @@ To compile a file, you can use `./asm.lua *.lua`. By default, this will create a
 # Short reference
 
 ## Registers
-
+### All of these are supposed to be typed, but currently their types aren't checked, so can store any value that a lua variable can
  - general purpose registers (can be used for any operation (mostly)) (only numbers allowed here)
     - **A** the accumulator
     - **B** base index 
