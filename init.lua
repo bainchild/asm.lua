@@ -1,18 +1,19 @@
 
 local prelude = [[
-_R={a=0,b=0,c=0,d=0,ss='\0',ds='\0',fn=function()end,f={gt=false,lt=false,ge=false,le=false,eq=false,ne=false,err=false,syserr=false},sp=65536}
-_X={}
-_D={}
-_P={}
-_PD={}
+---@diagnostic disable: undefined-global, unused-local
+_R=_R or {a=0,b=0,c=0,d=0,ss='\0',ds='\0',fn=function()end,f={gt=false,lt=false,ge=false,le=false,eq=false,ne=false,err=false,syserr=false},sp=65536}
+_X=_X or {}
+_D=_D or {}
+_P=_P or {}
+_PD=_PD or {}
 _S,_ST=nil,nil
-_MMAP={{a=0,b=0,set=function()end,get=function()end},{a=1,b=81920,set=function(p,x) _D[p]=x end,get=function(p) return _D[p] end}}
-_M=function(p,x)
+_MMAP=_MMAP or {{a=0,b=0,set=function()end,get=function()end},{a=1,b=81920,set=function(p,x) _D[p]=x end,get=function(p) return _D[p] end}}
+_M=_M or function(p,x)
 for i=#_MMAP,1,-1 do
- local v=_MMAP[i]
- if p>=v.a and p<=v.b then
-  if x then v.set(p,x) else return v.get(p) end
- end
+    local v=_MMAP[i]
+    if p>=v.a and p<=v.b then
+    if x then v.set(p,x) else return v.get(p) end
+    end
 end
 end
 local id=function(...) return ... end
