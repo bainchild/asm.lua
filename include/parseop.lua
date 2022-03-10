@@ -8,27 +8,26 @@ ops['ld'] = {pattern = '%s=_M(%s)', arg = {'a', 'b'}}
 -- stack operations
 ops['call'] = {pattern = 'local _S,_ST = pcall(%s);_R.f.syserr=not _S; if _ST~=nil then _R.ds = _ST end', arg = {'a'}}
 ops['callx'] = {pattern = '_Xargs={}\n' ..
-                          '_Xnargs=%d\n' ..
+                    '_Xnargs=%d\n' ..
                           '_R.sp=_R.sp-_Xnargs\n' ..
                           'for i=0,_Xnargs-1 do _Xargs[i+1]=_M(_R.sp+i) end\n' ..
                           'local _S,_ST = pcall(%s,unpck(_Xargs));_R.f.syserr=not _S; if _ST~=nil then _R.ds = _ST end',
                           arg = {'b', 'a'}}
-ops['ls'] = {pattern = [[
-local m,w = loadstring(%s)
-if m == nil then
-  _R.f.syserr = true
-  _R.ds = w
-else
-  _R.fn = m
-end
-]],arg={'a'}}
+ops['ls'] = {pattern = 'local m,w = loadstring(%s)\n' ..
+                        'if m == nil then\n' ..
+                        '\t_R.f.syserr = true\n' ..
+                        '\t_R.ds = w\n' ..
+                        'else\n' ..
+                        '\t_R.fn = m\nend',arg={'a'}}
+ops['req'] = {pattern = 'local _S,_ST = pcall(function() return require(%s) end)\n' ..
+                        '_R.f.syserr = not _S\n' ..
+                        'if _ST~=nil then _R.ds = _ST end',arg={'a'}}
 ops['ret'] = {pattern = 'return', arg = {}}
 ops['retx'] = {pattern = '_Xargs={}\n' ..
-                          '_Xnargs=%d\n' ..
-                          '_R.sp=_R.sp-_Xnargs\n' ..
-                          'for i=0,_Xnargs-1 do _Xargs[i+1]=_M(_R.sp+i) end\n' ..
-                          'return unpack(_Xargs)',
-                          arg = {'b', 'a'}}
+                        '_Xnargs=%d\n' ..
+                        '_R.sp=_R.sp-_Xnargs\n' ..
+                        'for i=0,_Xnargs-1 do _Xargs[i+1]=_M(_R.sp+i) end\n' ..
+                        'return unpack(_Xargs)',arg = {'b', 'a'}}
 ops['push'] = {pattern = '_M(_R.sp,%s);_R.sp=_R.sp+1', arg = {'a'}}
 ops['pop'] = {pattern = '_R.sp=_R.sp-1;%s=_M(_R.sp)', arg = {'a'}}
 
