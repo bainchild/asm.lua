@@ -127,7 +127,7 @@ local compile = function(src, verbose, std, ports, mmap)
     if mmap then
         for _, v in ipairs(mmap) do
             prelude = prelude .. string.format(
-                '_MMAP[#_MMAP+1]={a=%d,b=%d,set=%s,get=%s}\n',
+                'if not definedAlready then _MMAP[#_MMAP+1]={a=%d,b=%d,set=%s,get=%s} end\n',
                 v.min or v[1],
                 v.max or v[2],
                 v.set or v[3] or 'function()end',
