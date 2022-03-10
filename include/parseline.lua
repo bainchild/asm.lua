@@ -15,8 +15,8 @@ local ex = {
     {type = 'def', pattern = 'def ([%a%d_%-]+) (0[0-7]*%.?[0-7]+)', out = {'name', 'val'}},
     {type = 'def', pattern = 'def ([%a%d_%-]+) (0b[01]*%.?[01]+)', out = {'name', 'val'}},
     {type = 'def', pattern = 'def ([%a%d_%-]+) (%d*%.?%d+)', out = {'name', 'val'}},
-    {type = 'op', pattern = '(%a+) ([%a%d%[%]_%-"%.]+), ([%a%d%[%]_%-"%.]+)', out = {'op', 'a', 'b'}},
-    {type = 'op', pattern = '(%a+) ([%a%d%[%]_%-"%.]+)', out = {'op', 'a'}},
+    {type = 'op', pattern = '(%a+) ([%a%d%[%]_%-"%.:\t %%\\/]+), ([%a%d%[%]_%-"%.:\t %%\\/]+)', out = {'op', 'a', 'b'}},
+    {type = 'op', pattern = '(%a+) ([%a%d%[%]_%-"%.%:\t %%\\/]+)', out = {'op', 'a'}},
     {type = 'op', pattern = '(%a+)', out = {'op'}}
 }
 
