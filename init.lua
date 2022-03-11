@@ -2,12 +2,11 @@
 local prelude = [[
 ---@diagnostic disable: undefined-global, unused-local
 local definedAlready
-if _R and _X and _D and _P and _PD and _MMAP and _M then
+if _R and _D and _P and _PD and _MMAP and _M then
     definedAlready = true
 else
     definedAlready = false
     _R=_R or {a=0,b=0,c=0,d=0,ss='\0',ds='\0',fn=function()end,f={gt=false,lt=false,ge=false,le=false,eq=false,ne=false,err=false,syserr=false},sp=65536}
-    _X=_X or {}
     _D=_D or {}
     _P=_P or {}
     _PD=_PD or {}
