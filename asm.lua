@@ -42,7 +42,7 @@ local usage = function()
     print('Usage: asm.lua [options] FILE\n\n' ..
           'Options:\n' ..
           ' -o --out FILE   Output to FILE\n' ..
-          ' -m --minimize   Minimize the output by removing newlines' ..
+          ' -m --minimize   Minimize the output by removing newlines\n' ..
           ' -n --nostd      No std library, std ports and standard mmap\n' ..
           ' -r --run        Run the output instead of writing go FILE\n' ..
           ' -h --help       Show this message and quit')
